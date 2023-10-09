@@ -1,14 +1,12 @@
 package springmvc.com.controller;
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import springmvc.com.model.User;
+
 @Controller
 public class ContectController
 {
@@ -36,45 +34,87 @@ public class ContectController
 	//  }
 	
    //}
+	
+	//this is very good way
+	/*----------------how to show data forward  in second view in java SpringMvC--------*/
+	//yah code kiya kaam karta hai ki hamare views data aata hai hamre controller aaur controller
+	//   per data ko process kar rahe hai aaur phir sa data return phir dusare view per data ko dikha dete hai
+	
+	 //@GetMapping("/")
+	// public String  showIndex() 
+	// {
+	//	return "contect";  
+    //  }
+	  //here is create handler method
+	
+	// @RequestMapping("/contect")
+	//public String  showForm() 
+	// {
+	//	return"contect"; //here is put your view name 
+	// }
+	//@RequestMapping(path="/processform", method =RequestMethod.POST)
+	//public String handleform(
+				 //here is your fiest view matlab first jsp page
+			 // @RequestParam("email")String email,
+			 //@RequestParam("userName")String userName,
+		 //@RequestParam("passWord")String passWord,Model model)
+		  //{ 
+	          
+		     // System.out.println("email"+email);
+		     // System.out.println("userName"+userName);
+		     //  System.out.println("passWord"+passWord);
+		       
+		       //process 
+		     // User user=new User();
+		    // model.addAttribute("email",email);
+			// model.addAttribute("userName",userName);
+			 //model.addAttribute("passWord",passWord);
+			// model.addAttribute("it is your user data object"+user);
+			    
+			 // return "success";
+		// }
+  //}	
+	
+	
 	/*-------------------this is secod way-----------------------------------	*/
 	//this is a good way
 	//how to fetch data in springmvc
 		// this is this is seconde way fetch data in springmvc
 		//this fist way
 	// this is this is seconde way fetch data in springmvc
-			//this fist way
+			//this is a good way 
 	 @GetMapping("/")
 	  public String  showIndex() 
 	  {
-		return "contect";  
-	  }
+	   return "contect";  
+	 }
 	  //here is create handler method
-	
 	  @RequestMapping("/contect")
-	  public String  showForm() 
-	  {
-		return"contect"; //here is put your view name 
-	  }
+	 public String  showForm() 
+	 {
+	  return"contect"; //here is put your view name 
+	 }
 	   //here is second way
 	 @RequestMapping(path="/processform", method =RequestMethod.POST)
-	 public String handleform(
+	public String handleform(
 			 //here is your fiest view matlab first jsp page
 			 @RequestParam(name="email",required =false)String email,
 			 @RequestParam("userName")String userName,
 			 @RequestParam("passWord")String passWord,Model model)
-	 { 
+	{ 
 		
 		 //here create a user name 
 		 User user=new User();
-		 user.setEmail(email);
-		 user.setUserName(userName);
-		 user.setPassword(passWord);
+	     user.setEmail(email);
+		user.setUserName(userName);
+		user.setPassword(passWord);
 		 
 		 System.out.println(user);
 		 
-		 
+		 model.addAttribute(user);
 		 return "succese"; 
-	 }	 
+	 }
+ }	 
 		 
 		//here is stared first way of handler method put in side @ModelAttribute 
 		// aab aapko aalge allge filed key request param nahi lagani hai aaur simply aaone 
@@ -215,6 +255,4 @@ public class ContectController
 		 // return "succese"; 
 		//}
 
-	 
-
-}
+//}

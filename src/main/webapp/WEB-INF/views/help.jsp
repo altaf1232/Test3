@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 
 <!-- here is create my pagedirective  -->   
-<%@ page isELIgnored = "false" %> 
+<%@page isELIgnored ="false" %> 
 <!-- here is create jstl perfix tag -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
